@@ -44,25 +44,40 @@ in
           "${profile}" = {
             extraConfig = builtins.readFile "${package}/user.js";
             containersForce = true;
-            userChrome = lib.mkBefore (builtins.readFile "${package}/chrome/userChrome.css");
           };
         }) cfg.profiles
       );
     };
 
-    home.file = lib.mkMerge (
-      map (profile: {
-        "${configDir}${profile}/chrome" = {
-          source = pkgs.lib.cleanSourceWith {
-            src = "${package}/chrome";
-            filter = path: type: !(type == "regular" && baseNameOf path == "userChrome.css");
-          };
-          recursive = true;
-        };
-        "${configDir}${profile}/chrome/config.css" = {
-          text = cfg.configCss;
-        };
-      }) cfg.profiles
-    );
+    home.activation = let
+      configCss = pkgs.writeText "config.css" cfg.configCss;
+    in
+      lib.listToAttrs (
+        map (
+          profile: {
+            name = "copyTextfox${profile}";
+            value =
+              lib.hm.dag.entryAfter
+              ["linkGeneration"]
+              ''
+                cd "${package}"
+                SRC_FILES=$(find . -type f | grep ./chrome)
+                PROFILE_DIR="${configDir}${profile}"
+                cd "$HOME/$PROFILE_DIR"
+                for file in $SRC_FILES; do
+                  dirname=$(dirname "$file")
+                  if [ ! -d "$dirname" ]; then
+                    mkdir -p "$dirname"
+                  fi
+                  cp -L "${package}/$file" "$HOME/$PROFILE_DIR/$file"
+                  chmod 744 "$HOME/$PROFILE_DIR/$file"
+                done
+                cp -L ${configCss} "$HOME/$PROFILE_DIR/chrome/config.css"
+                chmod 744 "$HOME/$PROFILE_DIR/chrome/config.css"
+              '';
+          }
+        )
+        cfg.profiles
+      );
   };
 }
