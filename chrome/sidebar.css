@@ -1,5 +1,6 @@
 #sidebar {
   border-radius: var(--tf-rounding) !important;
+  box-shadow: none !important;
 }
 
 #sidebar-header {
@@ -10,10 +11,6 @@
   display: none;
 }
 
-#sidebar {
-  box-shadow: none !important;
-}
-
 #sidebar-main {
   :root[lwtheme] & {
     background-color: var(--tf-bg) !important;
@@ -22,8 +19,8 @@
 }
 #sidebar-box {
   font-size: unset !important;
-  margin: 8px;
-  padding: 8px !important;
+  margin: 0px !important;
+  padding: 0px !important;
   border: var(--border-width) solid var(--tf-border);
   border-radius: var(--tf-rounding) !important;
   transition: border-color var(--tf-border-transition);
@@ -39,8 +36,8 @@
     color: var(--lwt-text-color);
     background-color: var(--tf-bg);
     position: absolute;
-    margin: -1.75rem 0rem;
-    padding: 0 4px;
+    margin: 0px;
+    padding: 0px;
   }
   &:hover::before {
     color: var(--tf-accent);
@@ -53,7 +50,7 @@
 
 .buttons-wrapper {
   display: var(--tf-display-sidebar-tools) !important;
-  margin: 8px;
+  margin: 0px;
   border: var(--border-width) solid var(--tf-border);
   border-radius: var(--tf-rounding) !important;
   transition: border-color var(--tf-border-transition);
@@ -66,8 +63,8 @@
     content: "tools";
     color: var(--lwt-text-color);
     background-color: var(--tf-bg);
-    margin: 3.25rem .4rem;
-    padding: 0 4px;
+    margin: 0px;
+    padding: 0px;
   }
   &:hover::before {
     color: var(--tf-accent);

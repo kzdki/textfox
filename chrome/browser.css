@@ -7,10 +7,10 @@ browser {
 }
 
 #tabbrowser-tabbox {
-  margin: 8px !important;
+  margin: 0px !important;
   border: var(--border-width) solid var(--tf-border);
   border-radius: var(--tf-rounding);
-  padding: 8px !important;
+  padding: 0px !important;
   transition: border-color var(--tf-border-transition);
   &:hover {
     border-color: var(--tf-accent) !important;
@@ -24,8 +24,8 @@ browser {
     content: "main";
     background-color: var(--tf-bg);
     position: absolute;
-    margin: -1.75rem 0rem;
-    padding: 0 4px;
+    margin: 0px;
+    padding: 0px;
   }
 }
 

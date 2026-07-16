@@ -53,7 +53,7 @@
 }
 
 #nav-bar {
-  margin: var(--tf-navbar-margin);
+  margin: var(--tf-navbar-margin) !important;
   padding: var(--tf-navbar-padding) !important;
   border-top: var(--border-width) !important;
   border-style: solid !important;
@@ -70,8 +70,8 @@
     content: "navbar";
     background-color: var(--tf-bg);
     position: absolute;
-    margin: -16px 8px;
-    padding: 0 2px;
+    margin: 0px;
+    padding: 0px;
   }
   &:hover::before {
     color: var(--tf-accent);
@@ -82,8 +82,8 @@
   }
 }
 #PersonalToolbar {
-  margin: 8px 8px 2px;
-  padding: 4px !important;
+  margin: 0px !important;
+  padding: 0px !important;
   border-top: var(--border-width) !important;
   border-style: solid !important;
   border-width: var(--border-width);
@@ -99,8 +99,8 @@
     content: "bookmarks";
     background-color: var(--tf-bg);
     position: absolute;
-    margin: -1.25rem 0.4rem;
-    padding: 0 2px;
+    margin: 0px;
+    padding: 0px;
   }
   &:hover::before {
     color: var(--tf-accent);
@@ -113,13 +113,21 @@
 }
 
 toolbarbutton.bookmark-item:not(.subviewbutton) {
-  padding: 8px !important;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+#OtherBookmarks {
+  min-height: 32px !important;
+  margin: 0px !important;
+  padding: 0px !important;
 }
 
 :root[tabsintitlebar] #toolbar-menubar[autohide="true"] {
   --tab-min-height: fit-content !important;
   min-height: fit-content !important;
-  padding-top: 3px !important;
+  margin: 0px !important;
+  padding: 0px !important;
 }
 
 .browser-toolbar {
@@ -130,7 +138,8 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 
 @media (-moz-bool-pref: "sidebar.revamp") {
   #nav-bar::before {
-    margin: -1.35rem 0.75rem;
+    margin: 0px;
+    padding: 0px;
     left: 0;
   }
 
