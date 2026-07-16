@@ -49,7 +49,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages =
+    programs.firefox.package = 
       let
         preferences =
           let
@@ -72,7 +72,7 @@ in
             configCss
             ;
 
-          extraPolicies = policies;
+          extraPolicies = {};
           extraPrefs = preferences;
         })
       ];
